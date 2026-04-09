@@ -509,17 +509,19 @@ function openModal(id) {
   if (id) {
     const c = challenges.find(x => x.id === id);
     if (!c) return;
-    document.getElementById('f-name').value = c.name;
-    document.getElementById('f-cat').value  = c.cat;
-    document.getElementById('f-days').value = c.days;
-    document.getElementById('f-desc').value = c.desc || '';
+    document.getElementById('f-name').value  = c.name;
+    document.getElementById('f-cat').value   = c.cat;
+    document.getElementById('f-days').value  = c.days;
+    document.getElementById('f-start').value = c.startDate || tod();
+    document.getElementById('f-desc').value  = c.desc || '';
     document.getElementById('m-title').textContent = 'Editar desafio';
     del.style.display = 'inline-flex';
   } else {
-    document.getElementById('f-name').value = '';
-    document.getElementById('f-cat').value  = 'saude-fisica';
-    document.getElementById('f-days').value = 30;
-    document.getElementById('f-desc').value = '';
+    document.getElementById('f-name').value  = '';
+    document.getElementById('f-cat').value   = 'saude-fisica';
+    document.getElementById('f-days').value  = 30;
+    document.getElementById('f-start').value = tod();
+    document.getElementById('f-desc').value  = '';
     document.getElementById('m-title').textContent = 'Novo desafio';
     del.style.display = 'none';
   }
@@ -533,21 +535,23 @@ function closeMback(e) { if (e.target === document.getElementById('mback')) clos
 function saveChallenge() {
   const name = document.getElementById('f-name').value.trim();
   if (!name) return;
+  const startDate = document.getElementById('f-start').value || tod();
   if (editingId) {
     const c = challenges.find(x => x.id === editingId);
     if (!c) return;
-    c.name = name;
-    c.cat  = document.getElementById('f-cat').value;
-    c.days = parseInt(document.getElementById('f-days').value) || 30;
-    c.desc = document.getElementById('f-desc').value.trim();
+    c.name      = name;
+    c.cat       = document.getElementById('f-cat').value;
+    c.days      = parseInt(document.getElementById('f-days').value) || 30;
+    c.startDate = startDate;
+    c.desc      = document.getElementById('f-desc').value.trim();
   } else {
     challenges.unshift({
-      id: Date.now().toString(),
+      id:        Date.now().toString(),
       name,
       cat:       document.getElementById('f-cat').value,
       days:      parseInt(document.getElementById('f-days').value) || 30,
       desc:      document.getElementById('f-desc').value.trim(),
-      startDate: tod(),
+      startDate,
       checkins:  [],
     });
   }
@@ -589,10 +593,11 @@ function renderExplorar() {
 }
 
 function fromSug(s) {
-  document.getElementById('f-name').value = s.name;
-  document.getElementById('f-cat').value  = s.cat;
-  document.getElementById('f-days').value = s.days;
-  document.getElementById('f-desc').value = s.desc || '';
+  document.getElementById('f-name').value  = s.name;
+  document.getElementById('f-cat').value   = s.cat;
+  document.getElementById('f-days').value  = s.days;
+  document.getElementById('f-start').value = tod();
+  document.getElementById('f-desc').value  = s.desc || '';
   document.getElementById('m-title').textContent = 'Novo desafio';
   document.getElementById('del-btn').style.display = 'none';
   editingId = null;
