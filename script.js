@@ -13,23 +13,138 @@ const CATS = {
   'financeiro':      { l: 'Financeiro',       c: '#C0B4D4', bg: '#F0EDF8', d: '#5A4878' },
 };
 
+const ICONS = {
+  correr: `<svg viewBox="0 0 28 28" fill="none" stroke="#5A7352" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="17" cy="6" r="2.2" fill="#B5C4AE" stroke="none"/>
+    <path d="M13 10l2 3 4-2" stroke="#5A7352"/>
+    <path d="M11 13l-3 5" /><path d="M15 13l2 5-3 2"/>
+    <path d="M8 18l2-5" />
+  </svg>`,
+  agua: `<svg viewBox="0 0 28 28" fill="none" stroke="#9AB3C4" stroke-width="1.5" stroke-linecap="round">
+    <path d="M14 5 C14 5 7 13 7 17.5 a7 7 0 0014 0 C21 13 14 5 14 5Z" fill="#EAF1F8" stroke="#3A5F7A"/>
+    <path d="M11 19 C11 19 10 17 11 15" stroke="#9AB3C4" stroke-width="1" opacity=".7"/>
+  </svg>`,
+  sono: `<svg viewBox="0 0 28 28" fill="none" stroke-width="1.5" stroke-linecap="round">
+    <path d="M18 7 A8 8 0 1 1 7 18 A6 6 0 0 0 18 7Z" fill="#EDEAF5" stroke="#5A4878"/>
+    <circle cx="11" cy="11" r="1" fill="#C0B4D4" stroke="none"/>
+    <circle cx="14" cy="9"  r=".7" fill="#C0B4D4" stroke="none"/>
+    <circle cx="9"  cy="14" r=".7" fill="#C0B4D4" stroke="none"/>
+  </svg>`,
+  flexoes: `<svg viewBox="0 0 28 28" fill="none" stroke="#5A7352" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="5" y1="18" x2="23" y2="18"/>
+    <path d="M8 18 L8 14 L13 11 L18 14 L18 18"/>
+    <circle cx="13" cy="9" r="2" fill="#B5C4AE" stroke="none"/>
+    <path d="M13 11 L13 8.5"/>
+  </svg>`,
+  caminhada: `<svg viewBox="0 0 28 28" fill="none" stroke="#5A7352" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="14" cy="6" r="2" fill="#B5C4AE" stroke="none"/>
+    <path d="M14 8 L12 15 L9 20"/>
+    <path d="M14 8 L16 15 L19 20"/>
+    <path d="M10 12 L18 12"/>
+  </svg>`,
+  alongamento: `<svg viewBox="0 0 28 28" fill="none" stroke="#5A7352" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="14" cy="6" r="2" fill="#B5C4AE" stroke="none"/>
+    <path d="M14 8 L14 16"/>
+    <path d="M8 12 L14 10 L20 12"/>
+    <path d="M10 16 L14 16 L18 16"/>
+    <path d="M10 16 L8 21"/><path d="M18 16 L20 21"/>
+  </svg>`,
+  meditacao: `<svg viewBox="0 0 28 28" fill="none" stroke-width="1.5" stroke-linecap="round">
+    <circle cx="14" cy="6" r="2" fill="#EDEAF5" stroke="#5A4878"/>
+    <path d="M9 14 C9 14 9 10 14 10 C19 10 19 14 19 14" stroke="#5A4878"/>
+    <path d="M6 14 L9 14 M19 14 L22 14" stroke="#C0B4D4"/>
+    <path d="M7 20 C7 20 9 14 14 14 C19 14 21 20 21 20" stroke="#5A4878" fill="#EDEAF5"/>
+  </svg>`,
+  tela: `<svg viewBox="0 0 28 28" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="7" width="18" height="12" rx="2" fill="#EAF1F8" stroke="#3A5F7A"/>
+    <line x1="11" y1="22" x2="17" y2="22" stroke="#9AB3C4"/>
+    <line x1="14" y1="19" x2="14" y2="22" stroke="#9AB3C4"/>
+    <line x1="9" y1="13" x2="9" y2="13.1" stroke="#E24B4A" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M12 11 L16 15 M16 11 L12 15" stroke="#E24B4A" stroke-width="1.2"/>
+  </svg>`,
+  semCigarro: `<svg viewBox="0 0 28 28" fill="none" stroke-width="1.5" stroke-linecap="round">
+    <rect x="7" y="17" width="14" height="3" rx="1.5" fill="#F5F0E8" stroke="#7A6245"/>
+    <line x1="16" y1="17" x2="16" y2="20" stroke="#CEC0A8"/>
+    <path d="M17 14 C17 14 18 12 17 10" stroke="#CEC0A8" stroke-width="1" opacity=".7"/>
+    <line x1="5" y1="5" x2="23" y2="23" stroke="#C97A72" stroke-width="1.8"/>
+  </svg>`,
+  fruta: `<svg viewBox="0 0 28 28" fill="none" stroke-width="1.5" stroke-linecap="round">
+    <path d="M14 10 C14 10 10 9 9 13 C8 17 10 22 14 22 C18 22 20 17 19 13 C18 9 14 10 14 10Z" fill="#F5EBEC" stroke="#7A3F52"/>
+    <path d="M14 10 C14 10 14 7 17 6" stroke="#5A7352" stroke-width="1.2"/>
+  </svg>`,
+  refrigerante: `<svg viewBox="0 0 28 28" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 8 L11 22 L17 22 L18 8Z" fill="#EAF1F8" stroke="#3A5F7A"/>
+    <path d="M9 8 L19 8" stroke="#3A5F7A"/>
+    <path d="M10.5 10 L11 12" stroke="#9AB3C4" stroke-width="1" opacity=".6"/>
+    <line x1="5" y1="5" x2="23" y2="23" stroke="#C97A72" stroke-width="1.8"/>
+  </svg>`,
+  alcool: `<svg viewBox="0 0 28 28" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 7 L10 16 C10 19.3 17 19.3 17 16 L17 7Z" fill="#F5F0E8" stroke="#7A6245"/>
+    <path d="M9 7 L18 7" stroke="#7A6245"/>
+    <line x1="10" y1="21" x2="17" y2="21" stroke="#CEC0A8"/>
+    <line x1="13.5" y1="19" x2="13.5" y2="21" stroke="#CEC0A8"/>
+    <line x1="5" y1="5" x2="23" y2="23" stroke="#C97A72" stroke-width="1.8"/>
+  </svg>`,
+  leitura: `<svg viewBox="0 0 28 28" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M7 8 C7 8 10 7 14 9 C18 7 21 8 21 8 L21 20 C21 20 18 19 14 21 C10 19 7 20 7 20Z" fill="#EAF1F8" stroke="#3A5F7A"/>
+    <line x1="14" y1="9" x2="14" y2="21" stroke="#9AB3C4"/>
+    <line x1="10" y1="11" x2="13" y2="12" stroke="#9AB3C4" stroke-width="1"/>
+    <line x1="10" y1="14" x2="13" y2="15" stroke="#9AB3C4" stroke-width="1"/>
+  </svg>`,
+  escrita: `<svg viewBox="0 0 28 28" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="7" y="6" width="14" height="17" rx="2" fill="#F5F0E8" stroke="#7A6245"/>
+    <line x1="10" y1="11" x2="18" y2="11" stroke="#CEC0A8"/>
+    <line x1="10" y1="14" x2="18" y2="14" stroke="#CEC0A8"/>
+    <line x1="10" y1="17" x2="15" y2="17" stroke="#CEC0A8"/>
+    <path d="M16 19 L20 15 L22 17 L18 21Z" fill="#8FAB85" stroke="#5A7352" stroke-width="1"/>
+  </svg>`,
+  gratidao: `<svg viewBox="0 0 28 28" fill="none" stroke-width="1.5" stroke-linecap="round">
+    <path d="M14 21 C14 21 6 16 6 10.5 A4.5 4.5 0 0 1 14 9 A4.5 4.5 0 0 1 22 10.5 C22 16 14 21 14 21Z" fill="#F8EEF2" stroke="#7A3F52"/>
+    <path d="M11 13 C11 13 11 11 13 11" stroke="#D4AEBA" stroke-width="1.2"/>
+  </svg>`,
+  telefone: `<svg viewBox="0 0 28 28" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 7 C9 7 10 9 10 11 L8 13 C8 13 10 17 15 20 L17 18 C17 18 19 19 21 20 C21 20 21 22 19 22 C13 22 6 15 6 9 C6 7 9 7 9 7Z" fill="#F7EFED" stroke="#8A4E45"/>
+  </svg>`,
+  dinheiro: `<svg viewBox="0 0 28 28" fill="none" stroke-width="1.5" stroke-linecap="round">
+    <circle cx="14" cy="14" r="9" fill="#EDEAF5" stroke="#5A4878"/>
+    <text x="14" y="18.5" text-anchor="middle" font-size="11" font-family="Georgia,serif" fill="#5A4878" stroke="none">$</text>
+  </svg>`,
+  hobby: `<svg viewBox="0 0 28 28" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 20 L10 12 L14 8 L18 12 L20 20" stroke="#7A6245" fill="#F5F0E8"/>
+    <path d="M8 20 L20 20" stroke="#7A6245"/>
+    <path d="M14 8 L14 5" stroke="#CEC0A8"/>
+    <circle cx="14" cy="4.5" r="1.5" fill="#CEC0A8" stroke="none"/>
+    <path d="M10 15 L18 15" stroke="#CEC0A8" stroke-width="1"/>
+  </svg>`,
+  autocuidado: `<svg viewBox="0 0 28 28" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 10 Q8 6 14 6 Q20 6 20 10 L20 16 Q20 22 14 22 Q8 22 8 16Z" fill="#F7EFED" stroke="#8A4E45"/>
+    <path d="M11 13 Q14 16 17 13" stroke="#D4AFA8"/>
+    <circle cx="11.5" cy="11" r="1" fill="#D4AFA8" stroke="none"/>
+    <circle cx="16.5" cy="11" r="1" fill="#D4AFA8" stroke="none"/>
+  </svg>`,
+};
+
 const SUGS = [
-  { name: 'Correr todo dia',          cat: 'saude-fisica',    days: 30,  desc: '30 min diários para corpo e mente.',    icon: '🏃' },
-  { name: 'Beber 2L de água',         cat: 'saude-fisica',    days: 21,  desc: 'Hidratação como ritual diário.',        icon: '💧' },
-  { name: 'Dormir 8 horas',           cat: 'saude-fisica',    days: 30,  desc: 'Sono de qualidade muda tudo.',          icon: '🌙' },
-  { name: '50 flexões/dia',           cat: 'saude-fisica',    days: 90,  desc: 'Força progressiva com constância.',     icon: '💪' },
-  { name: 'Caminhada diária',         cat: 'saude-fisica',    days: 30,  desc: '30 min ao ar livre.',                  icon: '🌿' },
-  { name: 'Alongamento matinal',      cat: 'saude-fisica',    days: 21,  desc: '10 min para começar bem.',             icon: '🤸' },
-  { name: 'Meditação',                cat: 'saude-mental',    days: 21,  desc: '10 min de presença plena.',            icon: '🧘' },
-  { name: 'Sem redes sociais',        cat: 'saude-mental',    days: 7,   desc: 'Uma semana de desintoxicação.',         icon: '📵' },
-  { name: 'Uma fruta por dia',        cat: 'alimentacao',     days: 30,  desc: 'Pequeno hábito, grande diferença.',    icon: '🍎' },
-  { name: 'Zero refrigerante',        cat: 'alimentacao',     days: 30,  desc: 'Substituir pelo que faz bem.',         icon: '🚫' },
-  { name: 'Zero álcool',              cat: 'alimentacao',     days: 30,  desc: 'Clareza, sono melhor, mais energia.',  icon: '🍃' },
-  { name: 'Ler 20 páginas',           cat: 'intelecto',       days: 30,  desc: 'Leitura diária transforma a mente.',   icon: '📚' },
-  { name: 'Escrita ativa',            cat: 'intelecto',       days: 21,  desc: '15 min de escrita todo dia.',          icon: '✍️' },
-  { name: 'Gratidão diária',          cat: 'espiritualidade', days: 21,  desc: 'Reconhecer pequenas vitórias.',        icon: '🙏' },
-  { name: 'Ligar pra alguém querido', cat: 'social',          days: 30,  desc: 'Manter vínculos afetivos vivos.',      icon: '💛' },
-  { name: 'Guardar dinheiro',         cat: 'financeiro',      days: 30,  desc: 'O hábito de poupar, qualquer quantia.',icon: '🌱' },
+  { name: 'Correr todo dia',          cat: 'saude-fisica',    days: 30,  desc: '30 min diários para corpo e mente.',         icon: 'correr' },
+  { name: 'Beber 2L de água',         cat: 'saude-fisica',    days: 21,  desc: 'Hidratação como ritual diário.',             icon: 'agua' },
+  { name: 'Dormir 8 horas',           cat: 'saude-fisica',    days: 30,  desc: 'Sono de qualidade muda tudo.',               icon: 'sono' },
+  { name: '50 flexões/dia',           cat: 'saude-fisica',    days: 90,  desc: 'Força progressiva com constância.',          icon: 'flexoes' },
+  { name: 'Caminhada diária',         cat: 'saude-fisica',    days: 30,  desc: '30 min ao ar livre.',                       icon: 'caminhada' },
+  { name: 'Alongamento matinal',      cat: 'saude-fisica',    days: 21,  desc: '10 min para começar bem.',                  icon: 'alongamento' },
+  { name: 'Rotina de sono',           cat: 'saude-fisica',    days: 21,  desc: 'Dormir e acordar no mesmo horário todo dia.',icon: 'sono' },
+  { name: 'Meditação',                cat: 'saude-mental',    days: 21,  desc: '10 min de presença plena.',                 icon: 'meditacao' },
+  { name: 'Tempo de tela limitado',   cat: 'saude-mental',    days: 30,  desc: 'Máximo 2h de redes sociais por dia.',        icon: 'tela' },
+  { name: 'Sem cigarro',              cat: 'saude-mental',    days: 30,  desc: 'Um dia de cada vez, sem fumar.',             icon: 'semCigarro' },
+  { name: 'Tempo para hobbies',       cat: 'saude-mental',    days: 30,  desc: '30 min por dia para o que você ama fazer.', icon: 'hobby' },
+  { name: 'Uma fruta por dia',        cat: 'alimentacao',     days: 30,  desc: 'Pequeno hábito, grande diferença.',         icon: 'fruta' },
+  { name: 'Zero refrigerante',        cat: 'alimentacao',     days: 30,  desc: 'Substituir pelo que faz bem.',              icon: 'refrigerante' },
+  { name: 'Zero álcool',              cat: 'alimentacao',     days: 30,  desc: 'Clareza, sono melhor, mais energia.',       icon: 'alcool' },
+  { name: 'Ler 20 páginas',           cat: 'intelecto',       days: 30,  desc: 'Leitura diária transforma a mente.',        icon: 'leitura' },
+  { name: 'Escrita ativa',            cat: 'intelecto',       days: 21,  desc: '15 min de escrita todo dia.',               icon: 'escrita' },
+  { name: 'Gratidão diária',          cat: 'espiritualidade', days: 21,  desc: 'Reconhecer pequenas vitórias.',             icon: 'gratidao' },
+  { name: 'Autocuidado diário',       cat: 'espiritualidade', days: 30,  desc: 'Skincare, banho lento, cuidar do corpo com atenção.',  icon: 'autocuidado' },
+  { name: 'Ligar pra alguém querido', cat: 'social',          days: 30,  desc: 'Manter vínculos afetivos vivos.',           icon: 'telefone' },
+  { name: 'Guardar dinheiro',         cat: 'financeiro',      days: 30,  desc: 'O hábito de poupar, qualquer quantia.',     icon: 'dinheiro' },
 ];
 
 /* ── STATE ── */
@@ -103,7 +218,7 @@ let obSlide = 0;
 const OB_TOTAL = 4;
 
 function initApp() {
-  /* Splash: show for 1.8s then decide onboarding or app */
+  /* Splash: show for 3.3s then decide onboarding or app */
   setTimeout(() => {
     document.getElementById('splash').classList.add('hide');
     const seen = localStorage.getItem('soma_ob_done');
@@ -115,7 +230,7 @@ function initApp() {
         updateObUI();
       }, 300);
     }
-  }, 1800);
+  }, 3300);
 }
 
 function updateObUI() {
@@ -463,8 +578,9 @@ function confirmDel() {
 function renderExplorar() {
   document.getElementById('sug-grid').innerHTML = SUGS.map(s => {
     const cat = CATS[s.cat] || { l: s.cat, bg: '#eee', d: '#555' };
+    const svgIcon = ICONS[s.icon] || '';
     return `<div class="sug-card" onclick='fromSug(${JSON.stringify(s)})'>
-      <span class="sug-icon">${s.icon}</span>
+      <span class="sug-icon">${svgIcon}</span>
       <div class="sug-name">${s.name}</div>
       <div class="sug-desc">${s.desc}</div>
       <span class="sug-tag" style="background:${cat.bg};color:${cat.d}">${cat.l} · ${s.days}d</span>
