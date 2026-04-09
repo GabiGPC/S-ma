@@ -302,9 +302,15 @@
         <option value="financeiro">Financeiro</option>
       </select>
     </div>
-    <div class="fg">
-      <label>Duração (dias)</label>
-      <input type="number" id="f-days" value="30" min="1" max="365">
+    <div class="fg-row">
+      <div class="fg" style="flex:1">
+        <label>Duração (dias)</label>
+        <input type="number" id="f-days" value="30" min="1" max="365">
+      </div>
+      <div class="fg" style="flex:1">
+        <label>Data de início</label>
+        <input type="date" id="f-start">
+      </div>
     </div>
     <div class="fg">
       <label>Descrição (opcional)</label>
