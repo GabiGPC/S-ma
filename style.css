@@ -271,6 +271,8 @@ nav button.active .ndot{opacity:1}
 .mhandle{width:34px;height:3px;border-radius:2px;background:var(--border);margin:0 auto 18px}
 .mtitle{font-family:var(--fd);font-size:20px;color:var(--ink);margin-bottom:18px}
 .fg{margin-bottom:14px}
+.fg-row{display:flex;gap:12px;margin-bottom:14px}
+.fg-row .fg{margin-bottom:0}
 .fg label{display:block;font-size:11px;color:var(--ink3);font-weight:300;margin-bottom:5px}
 .fg input,.fg select,.fg textarea{width:100%;padding:11px 13px;border:1px solid var(--border);border-radius:var(--r);font-family:var(--fb);font-size:14px;font-weight:300;color:var(--ink);background:var(--white);outline:none;transition:border-color .15s;-webkit-appearance:none;appearance:none}
 .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--sage-m)}
